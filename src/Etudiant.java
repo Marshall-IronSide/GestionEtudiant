@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Etudiant {
+public class Etudiant implements Serializable {
     private String nom, prenom;
     private double []notes;
     private double moyenne;
@@ -19,5 +20,32 @@ public class Etudiant {
             System.out.print("Entrez la note No"+(i+1)+" : ");
             notes[i] = lectureClavier.nextDouble();
         }
+        moyenne = calculMoyenne();
     }
+    private double calculMoyenne() {
+        double somme = 0.0;
+        for (double valeurNotes : notes) {
+            somme += valeurNotes;
+        }
+        return somme/notes.length;
+    }
+    public void affiche() {
+        System.out.println("Les notes de l'étudiant "+nom+" "+prenom+" sont: " );
+        for (double valeurNotes : notes) {
+            System.out.println(" "+valeurNotes);
+        }
+        System.out.println();
+        System.out.println("sa moyenne est : " + moyenne);
+    }
+
+    public String quelNom() {
+        return nom;
+    }
+    public String quelPrenom() {
+        return prenom;
+    }
+    public double quelMoyenne() {
+        return moyenne;
+    }
+
 }
