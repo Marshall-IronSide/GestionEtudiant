@@ -29,7 +29,7 @@ public class Etudiant implements Serializable {
         }
         return somme/notes.length;
     }
-    public void affiche() {
+    public void afficheUnEtudiant() {
         System.out.println("Les notes de l'étudiant "+nom+" "+prenom+" sont: " );
         for (double valeurNotes : notes) {
             System.out.println(" "+valeurNotes);
