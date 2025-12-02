@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Cursus implements Serializable {
@@ -43,6 +44,26 @@ public class Cursus implements Serializable {
             listeClasses.remove(cle);
             System.out.println(p+" "+n+" supprime");
         }else {
+            System.out.println(p+" "+n+" inconnu");
+        }
+    }
+    public void afficheLesEtudiant(){
+        if(listeClasses.size() != 0){
+            Collection<Etudiant> c =listeClasses.values();
+            for(Etudiant e :c){
+                e.afficheUnEtudiant();
+            }
+        }else{
+            System.out.println("Liste vide");
+        }
+    }
+    public void modifieUnEtudiant(String p, String n) {
+        String cle = CreerUneCle(p,n);
+        if(listeClasses.get(cle) != null){
+            Etudiant emodifie = new Etudiant(p,n);
+            listeClasses.put(cle, emodifie);
+            System.out.println(p+" "+n+" modifie");
+        } else {
             System.out.println(p+" "+n+" inconnu");
         }
     }

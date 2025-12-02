@@ -22,6 +22,22 @@ public class Etudiant implements Serializable {
         }
         moyenne = calculMoyenne();
     }
+
+    public Etudiant(String p, String n) {
+        this.nom = n;
+        this.prenom = p;
+        System.out.print("Combien de notes pour l'etudiant : ");
+        System.out.println(nom + " " + prenom);
+        Scanner lectureClavier = new Scanner(System.in);
+        int nombre = lectureClavier.nextInt();
+        notes = new double[nombre];
+        for (int i = 0; i < notes.length; i++) {
+            System.out.print("Entrez la note No"+(i+1)+" : ");
+            notes[i] = lectureClavier.nextDouble();
+        }
+        moyenne = calculMoyenne();
+    }
+
     private double calculMoyenne() {
         double somme = 0.0;
         for (double valeurNotes : notes) {
