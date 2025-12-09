@@ -1,9 +1,15 @@
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GestionEtudiant {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         byte choix = 0;
         Cursus C = new Cursus();
+        FichierEtudiant F = new FichierEtudiant();
+        F.ouvrir("W");
+        //C= F.lire();
+        F.fermer();
         String nom, prenom;
         Scanner lecureClavier = new Scanner(System.in);
         do{
@@ -43,7 +49,11 @@ public class GestionEtudiant {
                      nom = lecureClavier.next();
                      C.modifieUnEtudiant(prenom, nom);
                      break;
-                     case 6: System.exit(0);
+                     case 6: System.out.println("sauvegarde des données");
+                     F.ouvrir("Ecriture");
+                     F.ecrire(C);
+                     F.fermer();
+                     System.exit(0);
                      default: System.out.println("Option inconnu");
             }
         }while(choix != 6);
